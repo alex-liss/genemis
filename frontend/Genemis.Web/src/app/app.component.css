@@ -1,0 +1,7 @@
+.main-area {
+  margin: 8px;
+  padding: 8px;
+  background-color: #FFFFFF;
+  /* height is full height minus height of footer, header and two margins */
+  height: calc(100vh - 104px);
+}
