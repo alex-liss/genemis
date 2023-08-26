@@ -7,12 +7,16 @@
   src: url(assets/fonts/NotoSans-Regular.ttf);
 }
 
-body {
+html, body, app-root {
   margin: 0;
-  background-color: #F2F2EB;
-  font-family: NotoSans-Regular, sans-serif;
+  height: 100vh;
+  min-height: 100vh;
 }
 
-html, body,  app-root {
-  height: 100vh;
+body, app-root {
+  background-color: #F2F2EB;
+  font-family: NotoSans-Regular, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
+
