@@ -1,1 +1,13 @@
 rootProject.name = 'dispatcher'
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+    }
+    versionCatalogs {
+        libs {
+            from(files("../version-catalog/catalog/libs.versions.toml"))
+        }
+    }
+}

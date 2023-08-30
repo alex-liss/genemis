@@ -1,0 +1,51 @@
+import java.nio.file.Files
+
+plugins {
+    id 'version-catalog'
+    id 'maven-publish'
+}
+
+group 'net.genemis'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task copyToml(type: Copy) {
+    doLast {
+        def directory = file("catalog")
+        Files.createDirectories(directory.toPath())
+    }
+    from layout.buildDirectory.file("version-catalog/libs.versions.toml")
+    into layout.projectDirectory.dir("catalog")
+}
+
+generateCatalogAsToml.finalizedBy copyToml
+
+catalog {
+    versionCatalog {
+
+        library('projectlombok', 'org.projectlombok:lombok:1.18.28')
+        library('projectreactor', 'io.projectreactor:reactor-test:3.5.9')
+
+        plugin('springboot', 'org.springframework.boot').version('3.1.3')
+        plugin('spring-dependency-management', 'io.spring.dependency-management').version('1.1.3')
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.versionCatalog
+        }
+    }
+    repositories {
+        mavenCentral()
+    }
+
+}
