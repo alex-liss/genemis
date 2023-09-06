@@ -29,7 +29,7 @@ The release includes the following components and features:
 
 - Database:
     - MongoDB container running in Docker
-    - Predefined message is added to the database after the db is recreated
+    - DB is initialized with a collection, which contains a message for the UI
 
 ```mermaid
 flowchart LR
