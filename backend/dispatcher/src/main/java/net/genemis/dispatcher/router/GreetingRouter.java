@@ -13,6 +13,8 @@ import reactor.core.publisher.Mono;
 @Configuration()
 public class GreetingRouter {
 
+    private static final String MESSAGE_KEY = "greeting";
+
     private GreetingService greetingService;
 
     @Autowired
@@ -23,20 +25,14 @@ public class GreetingRouter {
     @Bean
     public RouterFunction<ServerResponse> routeGreeting() {
         return RouterFunctions.route()
-                .GET("/greeting", RequestPredicates.contentType(MediaType.APPLICATION_JSON), this::handleGreetingRequest)
-                .GET("/greeting", this::handlePlainGreetingRequest)
+                //.GET("/greeting", RequestPredicates.contentType(MediaType.APPLICATION_JSON), this::handleGreetingRequest)
+                .GET("/greeting", this::handleGreetingRequest)
                 .build();
     }
 
     private Mono<ServerResponse> handleGreetingRequest(ServerRequest req) {
-        Greeting greeting = greetingService.getGreeting();
+        Greeting greeting = greetingService.getGreeting(MESSAGE_KEY);
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(greeting));
     }
 
-    // TODO remove after frontend is connected
-    private Mono<ServerResponse> handlePlainGreetingRequest(ServerRequest req) {
-        Greeting greeting = greetingService.getGreeting();
-        greeting.setMessage("Plain greeting");
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(greeting));
-    }
 }

@@ -1,3 +1,8 @@
-genemis:
-  cors:
-    allowed-origins: "http://localhost:4200"
+cors:
+  allowed-origins: "http://localhost:4200"
+
+spring:
+  data:
+    mongodb:
+      uri: "mongodb://genemis:genemispswd@localhost:27017/"
+      database: "genemis"

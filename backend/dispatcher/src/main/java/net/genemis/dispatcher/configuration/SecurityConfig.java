@@ -9,10 +9,13 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+/**
+ * Security configuration.
+ */
 @Configuration
 public class SecurityConfig {
 
-    @Value("${genemis.cors.allowed-origins}")
+    @Value("${cors.allowed-origins}")
     private String allowedOrigins;
 
     @Bean

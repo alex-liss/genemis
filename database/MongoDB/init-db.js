@@ -8,8 +8,8 @@ db.createUser({
     roles: [{ role: 'readWrite', db: 'genemis' }],
 });
 
-db.createCollection("greetings");
+db.createCollection("messages");
 
-db.greetings.insertMany([
-    {greeting: 'Welcome to Genemis', language: 'en'},
-    {greeting: 'Willkommen im Genemis', language: 'de'}]);
+db.messages.insertMany([
+    {key: "greeting", message: 'Welcome to Genemis', language: 'en'},
+    {key: "greeting", message: 'Willkommen im Genemis', language: 'de'}]);
