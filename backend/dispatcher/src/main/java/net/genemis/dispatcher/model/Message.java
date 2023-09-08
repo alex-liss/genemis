@@ -11,8 +11,9 @@ import java.util.Optional;
 @Getter
 @Setter
 @Document(collection = "messages")
-public class Greeting {
+public class Message {
 
+    // TODO send error if message is not found
     private static final String DEFAULT_MESSAGE = "Welcome to Genemis";
 
     private String message;

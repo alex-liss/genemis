@@ -1,13 +1,13 @@
 package net.genemis.dispatcher.repository;
 
-import net.genemis.dispatcher.model.Greeting;
+import net.genemis.dispatcher.model.Message;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface GreetingRepository extends MongoRepository<Greeting, String> {
+public interface MessageRepository extends MongoRepository<Message, String> {
 
     @Query(value = "{ 'key' : ?0 }")
-    List<Greeting> findByKey(String key);
+    List<Message> findByKey(String key);
 }
