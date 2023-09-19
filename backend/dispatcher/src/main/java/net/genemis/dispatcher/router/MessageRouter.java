@@ -26,7 +26,7 @@ public class MessageRouter {
     @Bean
     public RouterFunction<ServerResponse> routeGreeting() {
         return RouterFunctions.route()
-                .GET("/greeting", RequestPredicates.contentType(MediaType.APPLICATION_JSON), this::handleGreetingRequest)
+                .GET("/greeting", this::handleGreetingRequest)
                 .build();
     }
 

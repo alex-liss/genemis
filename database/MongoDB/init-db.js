@@ -3,8 +3,8 @@
 db = db.getSiblingDB('genemis');
 
 db.createUser({
-    user: process.env.GENEMIS_USERNAME,
-    pwd: process.env.GENEMIS_PASSWORD,
+    user: process.env.GENEMIS_DB_USERNAME,
+    pwd: process.env.GENEMIS_DB_PASSWORD,
     roles: [{ role: 'readWrite', db: 'genemis' }],
 });
 

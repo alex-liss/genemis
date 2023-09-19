@@ -4,5 +4,5 @@ cors:
 spring:
   data:
     mongodb:
-      uri: "mongodb://genemis:genemispswd@localhost:27017/"
+      uri: "mongodb://genemis:genemispswd@mongo:27017/"
       database: "genemis"

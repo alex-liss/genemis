@@ -1,8 +1,5 @@
 version: '3.8'
 
-include:
-  - path: ../../networks.yml
-
 services:
 
   mongo:
@@ -41,3 +38,4 @@ volumes:
     driver: local
   mongodb-log:
     driver: local
+
