@@ -4,12 +4,23 @@ services:
   dispatcher:
     build:
       context: .
+    environment:
+      MONGO_DB_HOST: ${MONGO_DB_HOST}
+      MONGO_DB_PORT: ${MONGO_DB_PORT}
+      MONGO_DB_NAME: ${MONGO_DB_NAME}
+      MONGO_DB_USERNAME: ${MONGO_DB_USERNAME}
+      MONGO_DB_PASSWORD: ${MONGO_DB_PASSWORD}
+
     container_name: dispatcher
     ports:
       - 8080:8080
     networks:
       - genemis-network
+    depends_on:
+      - mongo
 
-networks:
-  genemis-network:
-    external: true
+secrets:
+    mongo_db_username:
+        file: db_username.txt
+    mongo_root_password:
+        external: true

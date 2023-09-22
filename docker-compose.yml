@@ -1,9 +1,8 @@
 version: '3.8'
 
 include:
-  - path: /networks.yml
-  - path: /database/MongoDB/no_network.docker-compose.yml
+  - path: /database/MongoDB/docker-compose.yml
     env_file: ./database/MongoDB/.env
-  - path: /backend/dispatcher/no_network.docker-compose.yml
+  - path: /backend/dispatcher/docker-compose.yml
 
 

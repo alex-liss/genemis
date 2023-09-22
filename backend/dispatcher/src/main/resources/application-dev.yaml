@@ -1,0 +1,11 @@
+cors:
+  allowed-origins: "http://localhost:4200"
+
+spring:
+  data:
+    mongodb:
+      host: "mongo"
+      port: "27017"
+      database: "genemis"
+      username: "genemis"
+      password: "genemispswd"

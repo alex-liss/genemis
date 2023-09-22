@@ -1,6 +1,0 @@
-version: '3.8'
-
-networks:
-  genemis-network:
-    name: genemis-network
-    driver: bridge

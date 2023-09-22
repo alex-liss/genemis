@@ -17,20 +17,25 @@ import java.util.Collections;
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
-    @Value("${spring.data.mongodb.uri}")
-    private String databaseURI;
-
+    @Value("${spring.data.mongodb.host}")
+    private String dbHost;
+    @Value("${spring.data.mongodb.port}")
+    private int dbPort;
     @Value("${spring.data.mongodb.database}")
-    private String database;
+    private String dbName;
+    @Value("${spring.data.mongodb.username}")
+    private String dbUser;
+    @Value("${spring.data.mongodb.password}")
+    private String dbPassword;
 
     @Override
     protected String getDatabaseName() {
-        return database;
+        return dbName;
     }
 
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString(databaseURI + database);
+        ConnectionString connectionString = new ConnectionString(buildConnectionString());
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
@@ -41,6 +46,10 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     @Override
     public Collection<String> getMappingBasePackages() {
         return Collections.singleton("net.genemis.dispatcher");
+    }
+
+    private String buildConnectionString() {
+        return "mongodb://" + dbUser + ":" + dbPassword + "@" + dbHost + ":" + dbPort + "/" + dbName;
     }
 
 }
