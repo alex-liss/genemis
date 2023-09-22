@@ -3,10 +3,6 @@
 The _docker-compose.yml_ contains services to run Mongo DB in a container environment.
 The database is initialized from _init-db.js_
 
-The _no_network.docker-compose.yml_ specifies services without specifying a network. 
-This one is used in the _docker-compose.yml_ file in the root directory, which runs all services
-together.
-
 ### Usage
 
 - Create a .env file in current directory with the following content:
