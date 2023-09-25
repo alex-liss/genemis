@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+
+    container_name: web
+    ports:
+      - 4200:4200
+    networks:
+      - genemis-network
+    depends_on:
+      - dispatcher

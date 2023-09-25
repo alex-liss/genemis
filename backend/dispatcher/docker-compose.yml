@@ -18,9 +18,3 @@ services:
       - genemis-network
     depends_on:
       - mongo
-
-secrets:
-    mongo_db_username:
-        file: db_username.txt
-    mongo_root_password:
-        external: true
