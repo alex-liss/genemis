@@ -4,6 +4,7 @@ include:
   - path: /database/MongoDB/docker-compose.yml
     env_file: ./database/MongoDB/.env
   - path: /backend/dispatcher/docker-compose.yml
+    env_file: ./backend/dispatcher/.env
   - path: /frontend/Genemis.Web/docker-compose.yml
 
 
