@@ -19,7 +19,7 @@ services:
     volumes:
       - mongodb-data:/data/db
       - mongodb-log:/var/log/mongodb
-      - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
+      - ./init-data:/docker-entrypoint-initdb.d/
 
   mongo-express:
     image: mongo-express:latest
@@ -32,6 +32,8 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo:27017/
     networks:
       - genemis-network
+    depends_on:
+      - mongo
 
 volumes:
   mongodb-data:
