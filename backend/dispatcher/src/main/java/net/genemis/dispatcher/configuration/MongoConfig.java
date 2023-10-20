@@ -4,12 +4,17 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import net.genemis.util.DateUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+import org.springframework.lang.NonNull;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.time.ZonedDateTime;
+import java.util.*;
 
 /**
  * Configuration for MongoDB.
@@ -50,6 +55,30 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     private String buildConnectionString() {
         return "mongodb://" + dbUser + ":" + dbPassword + "@" + dbHost + ":" + dbPort + "/" + dbName;
+    }
+
+    @Bean
+    public MongoCustomConversions customConversions(){
+        List<Converter<?,?>> converters = new ArrayList<>();
+        converters.add(new DateToZonedDateTimeConverter());
+        converters.add(new ZonedDateTimeToDateConverter());
+        return new MongoCustomConversions(converters);
+    }
+
+    public static class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTime> {
+
+        @Override
+        public ZonedDateTime convert(@NonNull Date source) {
+            return DateUtils.toZonedDateTime(source);
+        }
+    }
+
+    public static class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Date> {
+
+        @Override
+        public Date convert(@NonNull ZonedDateTime source) {
+            return DateUtils.toDate(source);
+        }
     }
 
 }
