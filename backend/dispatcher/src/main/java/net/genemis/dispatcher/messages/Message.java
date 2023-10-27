@@ -1,4 +1,4 @@
-package net.genemis.dispatcher.model;
+package net.genemis.dispatcher.messages;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

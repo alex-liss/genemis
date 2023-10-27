@@ -1,7 +1,5 @@
-package net.genemis.dispatcher.router;
+package net.genemis.dispatcher.messages;
 
-import net.genemis.dispatcher.model.Message;
-import net.genemis.dispatcher.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +24,7 @@ public class MessageRouter {
     @Bean
     public RouterFunction<ServerResponse> routeGreeting() {
         return RouterFunctions.route()
-                .GET("/greeting", this::handleGreetingRequest)
+                .GET("/message", this::handleGreetingRequest)
                 .build();
     }
 

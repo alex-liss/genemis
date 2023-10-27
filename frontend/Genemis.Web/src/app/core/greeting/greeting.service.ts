@@ -13,7 +13,7 @@ export class GreetingService {
   private options = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
 
   constructor(private http: HttpClient) {
-    this.backend = "http://localhost:8080/greeting";
+    this.backend = "http://localhost:8080/message";
   }
 
   public getGreeting(): Observable<Greeting> {

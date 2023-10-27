@@ -1,7 +1,7 @@
-package net.genemis.dispatcher.service;
+package net.genemis.dispatcher.messages;
 
-import net.genemis.dispatcher.model.Message;
-import net.genemis.dispatcher.repository.MessageRepository;
+import net.genemis.dispatcher.messages.Message;
+import net.genemis.dispatcher.messages.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
