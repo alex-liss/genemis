@@ -26,7 +26,7 @@ public class TimeSeriesRouter {
     @Bean
     public RouterFunction<ServerResponse> routeTimeSeries() {
         return RouterFunctions.route()
-                .GET("/timeseriesdata", this::handleGetTimeSeries)
+                .GET("/timeseries", this::handleGetTimeSeries)
                 .build();
     }
 
