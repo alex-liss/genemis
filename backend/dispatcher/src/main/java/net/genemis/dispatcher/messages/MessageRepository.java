@@ -1,6 +1,5 @@
 package net.genemis.dispatcher.messages;
 
-import net.genemis.dispatcher.messages.Message;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
