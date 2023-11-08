@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface TimeSeriesRepository extends MongoRepository<DataPoint, ZonedDateTime> {
 
-    List<DataPoint> findAll();
-
 }
