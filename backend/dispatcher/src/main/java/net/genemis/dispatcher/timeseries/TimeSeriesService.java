@@ -17,7 +17,7 @@ public class TimeSeriesService {
     }
 
     public TreeSet<DataPoint> getTimeSeries() {
-        List<DataPoint> data = timeSeriesRepository.findAll();
+        List<DataPoint> data = timeSeriesRepository.findByFirstDayOfMonth();
         return new TreeSet<>(data);
     }
 }
