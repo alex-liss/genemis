@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ChartComponent } from './shared/chart/chart.component';
 import {NgChartsModule} from "ng2-charts";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {NgChartsModule} from "ng2-charts";
     HttpClientModule,
     NgChartsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
