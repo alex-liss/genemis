@@ -10,10 +10,10 @@ public class DateUtils {
     }
 
     public static Date toDate(ZonedDateTime zonedDateTime) {
-        return Date.from(zonedDateTime.toInstant());
+        return null != zonedDateTime ? Date.from(zonedDateTime.toInstant()) : null;
     }
 
     public static ZonedDateTime toZonedDateTime(Date date) {
-        return date.toInstant().atZone(ZoneOffset.UTC);
+        return null != date ? date.toInstant().atZone(ZoneOffset.UTC) : null;
     }
 }
