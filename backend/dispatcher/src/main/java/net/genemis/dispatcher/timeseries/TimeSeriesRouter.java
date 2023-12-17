@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import java.util.TreeSet;
+import java.util.Set;
 
 @Configuration
 public class TimeSeriesRouter {
@@ -31,7 +31,7 @@ public class TimeSeriesRouter {
     }
 
     private Mono<ServerResponse> handleGetTimeSeries(ServerRequest req) {
-        TreeSet<DataPoint> timeSeries = timeSeriesService.getTimeSeries();
+        Set<DataPoint> timeSeries = timeSeriesService.getTimeSeries();
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(timeSeries));
     }
 

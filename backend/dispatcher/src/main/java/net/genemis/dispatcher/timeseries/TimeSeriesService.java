@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 @Service
@@ -16,7 +17,7 @@ public class TimeSeriesService {
         this.timeSeriesRepository = timeSeriesRepository;
     }
 
-    public TreeSet<DataPoint> getTimeSeries() {
+    public Set<DataPoint> getTimeSeries() {
         List<DataPoint> data = timeSeriesRepository.findByFirstDayOfMonth();
         return new TreeSet<>(data);
     }
