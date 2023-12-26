@@ -41,8 +41,8 @@ public class TimeSeriesApiTests extends AbstractWebapiTestHelper {
 
         timeSeries = new TreeSet<>();
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
-        timeSeries.add(new DataPoint(now, 1.0));
-        timeSeries.add(new DataPoint(now.plusDays(1), 2.0));
+        timeSeries.add(new DataPoint(now, 1.0, true));
+        timeSeries.add(new DataPoint(now.plusDays(1), 2.0, true));
     }
 
     @Test

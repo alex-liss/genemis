@@ -20,6 +20,8 @@ public class DataPoint implements Comparable<DataPoint> {
     private ZonedDateTime utcDateTime;
     @Field("price")
     private double value;
+    @Field("workday")
+    private boolean workday;
 
     @Override
     public int compareTo(DataPoint o) {
