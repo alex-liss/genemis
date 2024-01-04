@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DataPoint} from "./data-point";
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ApiService} from "../api/api.service";
 
 @Injectable({
