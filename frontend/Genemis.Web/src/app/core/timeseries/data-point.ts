@@ -1,6 +1,6 @@
-export class DataPoint {
+export interface DataPoint {
 
-  value!: number;
-  utcDateTime!: Date;
+  value: number;
+  utcDateTime: Date;
 
 }
