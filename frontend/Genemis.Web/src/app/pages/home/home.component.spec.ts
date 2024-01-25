@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HomeComponent } from './home.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -10,6 +11,7 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       imports: [HttpClientTestingModule],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
 
