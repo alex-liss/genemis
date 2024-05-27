@@ -19,6 +19,8 @@ configurations {
 }
 
 dependencies {
+    implementation project(':version-catalog')
+
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
