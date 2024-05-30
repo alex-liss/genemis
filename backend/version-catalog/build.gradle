@@ -8,10 +8,6 @@ plugins {
 group 'net.genemis'
 version '1.0-SNAPSHOT'
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
 task copyToml(type: Copy) {
     doLast {
         def directory = file("catalog")
