@@ -57,12 +57,12 @@ The plugins are:
     - Remote Root Directory -> /home/jenkins/agent
     - Usage -> Use this node as much as possible
     - Launch method -> Launch agents via SSH
-    - Host -> agent
+    - Host -> build-agent
     - Credentials -> select jenkins, which were created during the previous step
     - Host Key Verification Strategy -> Non verifying Verification Strategy
     - Expand Advanced
-    - In terminal execute the following command ``docker exec <container_id> which java`` where <container_id> is the id of agent container
-    - Copy the result from terminal and paste it into _JavaPath_ field
+    - In terminal execute the following command ``docker exec <container_id> which java`` where <container_id> is the id of agent container. 
+    - Copy the result from terminal and paste it into _JavaPath_ field. For this docker image it is _/opt/java/openjdk/bin/java_
     - Save
 - The agent must start and its status can be obtained from the UI
 

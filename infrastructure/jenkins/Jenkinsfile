@@ -1,0 +1,37 @@
+pipeline {
+   agent {
+       docker {
+             image 'eclipse-temurin:17.0.9_9-jdk-jammy'
+             args '--privileged'
+       }
+   }
+    stages {
+        stage('Checkout') {
+            steps {
+                echo '------------ Start Checkout -----------'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'git@github.com:alex-liss/genemis.git']])
+                echo '------------ Finished Checkout --------'
+            }
+        }
+        stage('Preparation') {
+            steps {
+                sh 'chmod +x ./gradlew'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo '------------ Start Build -----------'
+                sh './gradlew clean build -x test'
+                echo '------------ Finished Build --------'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo '------------ Start Test -----------'
+                sh './gradlew test'
+                echo '------------ Finished Test --------'
+        }
+
+        }
+    }
+}
