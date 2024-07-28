@@ -1,5 +1,3 @@
-version: '3.8'
-
 include:
   - path: /database/MongoDB/docker-compose.yml
     env_file: ./database/MongoDB/.env
