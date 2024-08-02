@@ -12,6 +12,8 @@ on:
       - "design/**"
       - "database/**"
       - "infrastructure/**"
+      - "README.md"
+      - ".github/workflows/build-backend.yml"
   pull_request:
     branches: [ "master" ]
     paths-ignore:
@@ -20,32 +22,31 @@ on:
       - "design/**"
       - "database/**"
       - "infrastructure/**"
+      - "README.md"
+      - ".github/workflows/build-backend.yml"
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /frontend/Genemis.Web
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [20.x]
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         
-    - name: CI
-      working-directory: /frontend/Genemis.Web
-      run: npm ci
-    - name: Build
-      working-directory: /frontend/Genemis.Web
-      run: npm run build --if-present
-    - name: Test
-      working-directory: /frontend/Genemis.Web
-      run: npm test
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test

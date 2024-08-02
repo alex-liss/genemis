@@ -12,6 +12,8 @@ on:
       - "frontend/**"
       - "database/**"
       - "infrastructure/**"
+      - "README.md"
+      - ".github/workflows/build-frontend.yml"
   pull_request:
     branches: ["master"]
     paths-ignore:
@@ -20,6 +22,8 @@ on:
       - "frontend/**"
       - "database/**"
       - "infrastructure/**"
+      - "README.md"
+      - ".github/workflows/build-frontend.yml"
 
 jobs:
   build:
