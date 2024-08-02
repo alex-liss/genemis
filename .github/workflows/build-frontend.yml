@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /frontend/Genemis.Web
+        working-directory: ./frontend/Genemis.Web
 
     strategy:
       matrix:
