@@ -6,8 +6,20 @@ name: Build Frontend
 on:
   push:
     branches: [ "master" ]
+    paths-ignore:
+      - "architecture/**"
+      - "backend/**"
+      - "design/**"
+      - "database/**"
+      - "infrastructure/**"
   pull_request:
     branches: [ "master" ]
+    paths-ignore:
+      - "architecture/**"
+      - "backend/**"
+      - "design/**"
+      - "database/**"
+      - "infrastructure/**"
 
 jobs:
   build:
