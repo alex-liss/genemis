@@ -2,6 +2,7 @@ rootProject.name = "Genemis"
 
 include("backend:version-catalog")
 include("backend:dispatcher")
+include("backend:calculator")
 
 dependencyResolutionManagement {
 

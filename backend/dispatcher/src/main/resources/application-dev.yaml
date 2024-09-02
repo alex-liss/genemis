@@ -9,3 +9,10 @@ spring:
       database: "genemis"
       username: "genemis"
       password: "genemispswd"
+
+management:
+  endpoints:
+    web:
+      base-path: "/"
+      path-mapping:
+        health: "/api/healthcheck"
