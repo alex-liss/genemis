@@ -55,14 +55,14 @@ jobs:
     - name: Build
       run: ./gradlew clean build
 
-    - name: List test report directory
+    - name: Find and upload test reports
       if: failure()
-      run: ls -la /home/runner/work/genemis/genemis/backend/dispatcher/build/reports/tests/test/
-
-    - name: Upload test results
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: /home/runner/work/genemis/genemis/backend/dispatcher/build/reports/tests/test/
-        retention-days: 10
+      run: |
+        find . -type d -path "*/build/reports/tests/test" -print0 | while IFS= read -r -d '' dir; do
+          echo "Found test report directory: $dir"
+          module=$(basename $(dirname $(dirname $(dirname $dir))))
+          artifact_name="${module}-test-results"
+          echo "Uploading $artifact_name from $dir"
+          zip -r "${artifact_name}.zip" "$dir"
+          gh actions upload-artifact --name "$artifact_name" --path "${artifact_name}.zip"
+        done
