@@ -57,12 +57,12 @@ jobs:
 
     - name: List test report directory
       if: failure()
-      run: ls -la build/reports/tests/test      
+      run: ls -la /home/runner/work/genemis/genemis/backend/dispatcher/build/reports/tests/test/
 
     - name: Upload test results
       if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: build/reports/tests/test/
+        path: /home/runner/work/genemis/genemis/backend/dispatcher/build/reports/tests/test/
         retention-days: 10
