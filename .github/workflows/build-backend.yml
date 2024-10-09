@@ -36,6 +36,10 @@ jobs:
       docker:
         image: docker
         options: --privileged
+      mongo:
+        image: mongo:latest
+        ports:
+          - 27017:27017
 
     steps:
     - name: Checkout
@@ -57,7 +61,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: root-test-results
+        name: test-results
         path: |
           build/reports/tests/test/
           backend/dispatcher/build/reports/tests/test/

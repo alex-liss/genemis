@@ -21,7 +21,12 @@ public class AbstractRepositoryTestHelper {
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest")
             .withCopyFileToContainer(MountableFile.forClasspathResource("init-db.js"),"/docker-entrypoint-initdb.d/init-db.js");
     static {
-        mongoDBContainer.start();
+        try {
+            mongoDBContainer.start();
+        } catch (Exception e) {
+            System.out.println(mongoDBContainer.getLogs());
+            throw e;
+        }
     }
 
     @DynamicPropertySource
