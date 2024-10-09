@@ -18,7 +18,7 @@ import org.testcontainers.utility.MountableFile;
 @DataMongoTest
 public class AbstractRepositoryTestHelper {
 
-    public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest")
+    public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7.0")
             .withCopyFileToContainer(MountableFile.forClasspathResource("init-db.js"),"/docker-entrypoint-initdb.d/init-db.js");
     static {
         try {
