@@ -19,6 +19,7 @@ import org.testcontainers.utility.MountableFile;
 public class AbstractRepositoryTestHelper {
 
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7.0")
+            .withReuse(true)
             .withCopyFileToContainer(MountableFile.forClasspathResource("init-db.js"),"/docker-entrypoint-initdb.d/init-db.js");
     static {
         try {
