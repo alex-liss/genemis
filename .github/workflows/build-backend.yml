@@ -47,22 +47,20 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
-    # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
     - name: Build
       run: ./gradlew clean build
 
-    - name: Find and upload test reports
-      if: failure()
-      run: |
-        find . -type d -path "*/build/reports/tests/test" -print0 | while IFS= read -r -d '' dir; do
-          echo "Found test report directory: $dir"
-          module=$(basename $(dirname $(dirname $(dirname $dir))))
-          artifact_name="${module}-test-results"
-          echo "Uploading $artifact_name from $dir"
-          zip -r "${artifact_name}.zip" "$dir"
-          gh actions upload-artifact --name "$artifact_name" --path "${artifact_name}.zip"
-        done
+    - name: Find and Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: root-test-results
+        path: |
+          build/reports/tests/test/
+          backend/dispatcher/build/reports/tests/test/
+          backend/calculator/build/reports/tests/test/
+        retention-days: 10
+      continue-on-error: true
